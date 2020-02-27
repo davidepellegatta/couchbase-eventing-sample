@@ -1,1 +1,3 @@
-const eventing = require('eventing-function');
+let eventing = require('eventing-function');
+
+module.exports = eventing;

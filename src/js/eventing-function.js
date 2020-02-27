@@ -46,7 +46,7 @@ function OnUpdate(doc, meta) {
     
     //persist the mutations
     try {
-        getBucket()[dealsDocumentId] = dealsDocument;
+        customerBucket[dealsDocumentId] = dealsDocument;
     } catch (e) {
         log(e);
     }
@@ -85,7 +85,7 @@ function retrieveDealsDocument(dealsDocumentId) {
     var dealsDocument = null;
     
     try {
-        dealsDocument = getBucket()[dealsDocumentId];
+        dealsDocument = customerBucket[dealsDocumentId];
          
     } catch (e) {
         log('Error while retrieving docId', e)
@@ -146,22 +146,4 @@ function createDealsDocument(dealsDocumentId, ndg) {
     dealsDocument['deals'] = []; 
     
     return dealsDocument;
-}
-
-/**
- * Wrap bucket scoped variable so that the code is fully testable
- */
-function getBucket(){
-
-    var localBucket = null;
-
-    if(customerBucket !== undefined) {
-        localBucket = customerBucket;
-    }
-
-    if(localBucket == null) {
-        localBucket = [];
-    }
-
-    return localBucket;
 }
