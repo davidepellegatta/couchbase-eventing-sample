@@ -2,6 +2,8 @@
 
 Couchbase eventing functions can be used for multiple use cases. On this repo it is shown how an eventing function can create summary documents useful for a direct Key-Value access.
 
+It is also shown how to run unit tests on your function before you deploy it!
+
 ## DataModel
 
 ### Deals Details Object
