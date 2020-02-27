@@ -9,11 +9,21 @@ function loadEventingFunction() {
     var file = path.join(__dirname, '/../src/js/eventing-function.js');
     var code = fs.readFileSync(file, 'utf8');
 
-    code = 'global.customerBucket = {}; function log(msg){ console.log(msg); } ' + code + ' module.exports = { OnUpdate: OnUpdate, OnDelete: OnDelete };';
+    // wrapper for Couchbase log function
+    const logWrapper = ' function log(msg){ console.log(msg); } ';
+    
+    // exporting Couchbase eventing default functions
+    const couchbaseExports = ' module.exports = { OnUpdate: OnUpdate, OnDelete: OnDelete }; ';
+    
+    // wrapper for Couchbase execution context for my bucket
+    global.customerBucket = {};
+
+    code = `${logWrapper} ${code} ${couchbaseExports}`;
 
 	return requireFromString(code, file);
 }
 
+// Load the eventing function
 const eventingFunction = loadEventingFunction();
 
 
