@@ -20,7 +20,7 @@ const eventingFunction = loadEventingFunction();
 describe('Test that the bucket variable is accessible', function () {
     it('should return an empty array', function () {
                 
-        assert.equal(customerBucket.hasOwnProperty('test'), false);
+        assert.equal(Object.keys(customerBucket).length, 0);
     });
 });
 
@@ -40,6 +40,7 @@ describe('Test that given a new dealsDetails document', function(){
     
         eventingFunction.OnUpdate(aNewDoc, aNewDocMeta);
         
+        assert.equal(Object.keys(customerBucket).length, 1);
         assert.equal(customerBucket.hasOwnProperty('deals::123'), true);
     });
 
