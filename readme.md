@@ -1,6 +1,6 @@
 # Couchbase Eventing Sample
 
-Simple repo that shows how an eventing function can create a new document given the creation of an another.
+Couchbase eventing functions can be used for multiple use cases. On this repo it is shown how an eventing function can create summary documents useful for a direct Key-Value access.
 
 ## DataModel
 
