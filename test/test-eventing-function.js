@@ -48,8 +48,12 @@ describe('Test that given a new dealsDetails document', function(){
         assert.equal(customerBucket['deals::123'].ndg, '123');
     });
 
-    it('contains the correct user reference', function() {
-        assert.equal(customerBucket['deals::123'].ndg, '123');
+    it('contains the correct type reference', function() {
+        assert.equal(customerBucket['deals::123'].type, 'deals');
+    });
+
+    it('contains an array of deals objects', function() {
+        assert.equal(customerBucket['deals::123'].deals.length, 1);
     });
 
 });
